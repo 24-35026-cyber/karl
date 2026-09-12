@@ -15,12 +15,18 @@ function buildGreeting(rawName) {
   return message;
 }
 
-greetBtn.addEventListener("click", function () {
-  const visitorName = nameInput.value;
-  const greeting = buildGreeting(visitorName);
-
+function updateGreeting() {
+  const greeting = buildGreeting(nameInput.value);
   greetOutput.textContent = greeting;
   greetOutput.classList.add("active");
+}
+
+greetBtn.addEventListener("click", function () {
+  updateGreeting();
+});
+
+nameInput.addEventListener("input", function () {
+  updateGreeting();
 });
 
 nameInput.addEventListener("keydown", function (event) {
